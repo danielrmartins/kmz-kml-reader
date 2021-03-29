@@ -33,7 +33,7 @@ function App() {
   const [mapEvent, useMapEvent] = useState<MapEventProps>({} as MapEventProps);
 
   const kmz =
-    "https://excelviewer.herokuapp.com/upload/temp/kmlviewer/189.6.252.46-e6728ea0939f85c63e2dde56042aac9b.kmz";
+    "https://excelviewer.herokuapp.com/upload/temp/kmlviewer/189.6.252.46-63189e90551f29d931ca8b816cc927fa.kmz";
  /*  const kmzToKml =
     "https://excelviewer.herokuapp.com/upload/temp/kmlviewer/189.6.252.46-dcc0109d0072e9e09104cf5394d99158.kml";
   const kmlFile =
@@ -68,8 +68,8 @@ function App() {
     <div style={{ display: "flex", justifyContent: "center" }}>
       {/*       <input name="file" type="file" onChange={(e) => readKml(e)} /> */}
 
-      <LoadScript googleMapsApiKey={ACCESS_TOKEN_GOOGLE_MAPS_API}>
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
+      <LoadScript googleMapsApiKey={ACCESS_TOKEN_GOOGLE_MAPS_API} >
+        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10} options={{ mapTypeId: 'satellite' }}  >
           <KmlLayer
             onLoad={(e) => {}}
             onUnmount={() => {}}
