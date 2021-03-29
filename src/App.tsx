@@ -29,17 +29,17 @@ function App() {
   /* const ACCESS_TOKEN_MAP_BOX = `access_token=${process.env.REACT_APP_ACCESS_TOKEN_MAP_BOX}`; */
   const ACCESS_TOKEN_GOOGLE_MAPS_API = `${process.env.REACT_APP_ACCESS_TOKEN_GOOGLE_MAPS_API}`;
 
-/*   const [kml, setKml] = useState<Document>(); */
+  /*   const [kml, setKml] = useState<Document>(); */
   const [mapEvent, useMapEvent] = useState<MapEventProps>({} as MapEventProps);
 
   const kmz =
     "https://excelviewer.herokuapp.com/upload/temp/kmlviewer/189.6.252.46-63189e90551f29d931ca8b816cc927fa.kmz";
- /*  const kmzToKml =
+  /*  const kmzToKml =
     "https://excelviewer.herokuapp.com/upload/temp/kmlviewer/189.6.252.46-dcc0109d0072e9e09104cf5394d99158.kml";
   const kmlFile =
     "https://excelviewer.herokuapp.com/upload/temp/kmlviewer/189.6.252.46-552756e0b888481f1a49ebe35df7ea73.kml";
  */
-/*   useEffect(() => {
+  /*   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/aviklai/react-leaflet-kml/master/src/assets/example1.kml"
     )
@@ -51,7 +51,7 @@ function App() {
       });
   }, []); */
 
-/*   const readKml = async (data: React.ChangeEvent<HTMLInputElement>) => {
+  /*   const readKml = async (data: React.ChangeEvent<HTMLInputElement>) => {
 
     data.target.files![0].text().then((kmlText) => {
       const parser = new DOMParser();
@@ -68,8 +68,19 @@ function App() {
     <div style={{ display: "flex", justifyContent: "center" }}>
       {/*       <input name="file" type="file" onChange={(e) => readKml(e)} /> */}
 
-      <LoadScript googleMapsApiKey={ACCESS_TOKEN_GOOGLE_MAPS_API} >
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10} options={{ mapTypeId: 'satellite' }}  >
+      <LoadScript googleMapsApiKey={ACCESS_TOKEN_GOOGLE_MAPS_API}>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={10}
+          options={{
+             mapTypeId: "hybrid", 
+             mapTypeControlOptions: {
+              mapTypeIds: ["satellite",'hybrid'],
+              position: 2,
+            },
+          }}
+        >
           <KmlLayer
             onLoad={(e) => {}}
             onUnmount={() => {}}
